@@ -1,0 +1,10 @@
+#router
+r_ip: 10.0.0.1
+r_masc: 255.255.255.0
+r_dir_red: 10.0.0.0/24
+i_s: eth1
+
+#cliente
+c_ip: 10.0.0.2
+c_masc: 255.255.255.0
+c_gtw: 10.0.0.1

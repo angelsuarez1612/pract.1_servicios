@@ -1,0 +1,22 @@
+# interfaces(5) file used by ifup(8) and ifdown(8)
+# Include files from /etc/network/interfaces.d:
+source-directory /etc/network/interfaces.d
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug eth0
+iface eth0 inet dhcp
+    post-up ip route del default dev $IFACE || true
+
+auto eth1
+iface eth1 inet dhcp
+    post-up iptables -t nat -A POSTROUTING -s {{r_dir_red}} -o {{i_s}} -j MASQUERADE
+    post-up iptables -t nat -A PREROUTING -p tcp --dport 80 -i {{i_s}} -j DNAT --to {{c_ip}}
+
+auto eth2
+iface eth2 inet static
+      address {{r_ip}}
+      netmask {{r_masc}}

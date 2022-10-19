@@ -1,0 +1,12 @@
+all:
+  children:
+    router:
+      hosts:
+        router:
+          ansible_ssh_host: 192.168.121.55
+          ansible_ssh_private_key_file: ../.vagrant/machines/router/libvirt/private_key
+    cliente:
+      hosts:
+        cliente1:
+          ansible_ssh_host: 192.168.121.57
+          ansible_ssh_private_key_file: ../.vagrant/machines/cliente/libvirt/private_key
